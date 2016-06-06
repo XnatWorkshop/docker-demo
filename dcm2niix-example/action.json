@@ -1,0 +1,14 @@
+{
+    "name": "dcm2niix-scan",
+    "description": "Run dcm2niix command on a scan",
+    "command-id": 5,
+    "root-xsi-type": "xnat:imageScanData",
+    "inputs": [
+        {
+            "name": "options",
+            "command-variable-name": "options",
+            "required": false,
+            "matchers": []
+        }
+    ]
+}

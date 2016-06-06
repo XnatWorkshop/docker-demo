@@ -1,0 +1,28 @@
+{
+    "name": "xnat/dcm2niix",
+    "type": "docker-image",
+    "description": "Runs dcm2niix in xnat/dcm2niix docker image",
+    "info-url": "https://github.com/XnatWorkshop/docker-demo/tree/master/dcm2niix-example",
+    "docker-image": {"id": 1},
+    "run-template": ["dcm2niix", "#options#", "-o /output", "/input"],
+    "variables": [
+        {
+            "name": "options",
+            "description": "Command-line options and flags for dcm2niix",
+            "type": "string",
+            "required": false
+        }
+    ],
+    "mounts-in": [
+        {
+            "name": "DICOM",
+            "path": "/input"
+        }
+    ],
+    "mounts-out": [
+        {
+            "name": "NIFTI",
+            "path": "/output"
+        }
+    ]
+}

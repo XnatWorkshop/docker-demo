@@ -104,11 +104,12 @@ def post_nifti(server, user, password, experiment, scan, file_name):
     post_url = '%(base_url)s/%(resource_id)d/files/%(resource_name)s?file_upload=true&format=NIFTI'
     resource_template = '%(experiment)s.%(scan)03d.nii.gz'
     session = requests.session()
+    session.auth = (user, password)
 
     # Create resource folder
     # PUT https://central.xnat.org/REST/experiments/CENTRAL_E07096/scans/2/resources/NIFTI?format=NIFTI
     put_instance = put_url % {"base_url": base_url}
-    put_response = session.put(put_instance, auth=(user, password))
+    put_response = session.put(put_instance)
     print 'Create: %d' % put_response.status_code
 
     # Get new folder resource ID

@@ -1,5 +1,6 @@
 # Build a dcmstack compatible Docker image with preloaded dcm->nii script.
 FROM python:2.7.11
+RUN pip install requests
 RUN easy_install pydicom
 RUN pip install nibabel
 RUN wget https://github.com/moloney/dcmstack/archive/master.zip

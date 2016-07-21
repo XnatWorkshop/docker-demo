@@ -48,7 +48,7 @@ def main(argv):
         nifit_file_name = output_dir + os.path.sep + scan + '.nii.gz';
         dcm_to_nii(dcm, nifit_file_name)
         # post nii.gz file to NIFTI folder on host
-        #post_nifti(host, user, password, session, int(scan), nifit_file_name)
+        post_nifti(host, user, password, session, int(scan), nifit_file_name)
 
 
 def get_scan_sets(input_dir):

@@ -42,6 +42,9 @@ def main(argv):
     input_dir = '/data/input'
     output_dir = '/data/output'
 
+    if not os.path.exists(output_dir):
+        os.makedirs(output_dir)
+
     # parse input directory structure by scan id
     for scan, dcm in get_scan_sets(input_dir).iteritems():
         # use dcmstack to create a nifti file from each scan set

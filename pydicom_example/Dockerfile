@@ -5,6 +5,5 @@ RUN easy_install pydicom
 RUN pip install nibabel
 RUN wget https://github.com/moloney/dcmstack/archive/master.zip && easy_install master.zip
 RUN mkdir /scripts
-RUN wget https://raw.githubusercontent.com/XnatWorkshop/docker-demo/master/pydicom_example/dicom2nifti_rest.py
-COPY dicom2nifti_rest.py /scripts/pydicom.py
+RUN wget https://raw.githubusercontent.com/XnatWorkshop/docker-demo/master/pydicom_example/dicom2nifti_rest.py -o /scripts/pydicom.py
 LABEL "org.nrg.commands"="[{\"name\":\"pydicom\",\"description\":\"Converts dicom to nifti with pydicom. Runs on a session; uploads nifti back to each scan manually.\", \"mounts-in\":[{\"name\":\"root\", \"remote-path\":\"/data/input\"}], \"mounts-out\":[{\"name\":\"NIFTI\", \"remote-path\":\"/data/output\"}], \"run-template\":[\"/bin/bash\", \"-c\", \"python /scripts/pydicom.py -h \$XNAT_HOST -u \$XNAT_USER -p \$XNAT_PASS -s #sessionId#\"],\"variables\":[{\"name\":\"sessionId\", \"description\": \"XNAT ID of session on which we are running\", \"required\":true, \"root-property\":\"ID\"}]}]"
